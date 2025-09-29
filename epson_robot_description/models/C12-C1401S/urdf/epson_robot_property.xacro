@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<robot name="EPSON_C12-C1401S" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<!-- Links -->
+  <xacro:property name="BASE_LINK" value="base_link" />
+<!-- Arm Links -->
+  <xacro:property name="LINK_1" value="j1_link" />
+  <xacro:property name="LINK_2" value="j2_link" />
+  <xacro:property name="LINK_3" value="j3_link" />
+  <xacro:property name="LINK_4" value="j4_link" />
+  <xacro:property name="LINK_5" value="j5_link" />
+  <xacro:property name="LINK_6" value="j6_link" />
+
+<!-- Joints -->
+  <xacro:property name="BASE_JOINT" value="base_joint" />
+<!-- Arm Joints -->
+  <xacro:property name="JOINT_1" value="j1_joint" />
+  <xacro:property name="JOINT_2" value="j2_joint" />
+  <xacro:property name="JOINT_3" value="j3_joint" />
+  <xacro:property name="JOINT_4" value="j4_joint" />
+  <xacro:property name="JOINT_5" value="j5_joint" />
+  <xacro:property name="JOINT_6" value="j6_joint" />
+
+<!-- Meshes -->
+  <xacro:property name="BASE_MESH" value="epson_robot_description/models/$(arg rb_model)/meshes/base.stl" />
+  <xacro:property name="LINK1_MESH" value="epson_robot_description/models/$(arg rb_model)/meshes/j1.stl" />
+  <xacro:property name="LINK2_MESH" value="epson_robot_description/models/$(arg rb_model)/meshes/j2.stl" />
+  <xacro:property name="LINK3_MESH" value="epson_robot_description/models/$(arg rb_model)/meshes/j3.stl" />
+  <xacro:property name="LINK4_MESH" value="epson_robot_description/models/$(arg rb_model)/meshes/j4.stl" />
+  <xacro:property name="LINK5_MESH" value="epson_robot_description/models/$(arg rb_model)/meshes/j5.stl" />
+  <xacro:property name="LINK6_MESH" value="epson_robot_description/models/$(arg rb_model)/meshes/j6.stl" />
+
+
+<!-- Joint Limits(rad) -->
+<!-- Max -->
+  <xacro:property name="joint1_limit_max_rad" value="4.18879680766232" />
+  <xacro:property name="joint2_limit_max_rad" value="0.959940853520878" />
+  <xacro:property name="joint3_limit_max_rad" value="3.52556508902855" />
+  <xacro:property name="joint4_limit_max_rad" value="3.4907011145661" />
+  <xacro:property name="joint5_limit_max_rad" value="2.35626639554178" />
+  <xacro:property name="joint6_limit_max_rad" value="9.42477796076938" />
+<!-- Min -->
+  <xacro:property name="joint1_limit_min_rad" value="-4.18879680766232" />
+  <xacro:property name="joint2_limit_min_rad" value="-2.35621845864216" />
+  <xacro:property name="joint3_limit_min_rad" value="-1.06465084371654" />
+  <xacro:property name="joint4_limit_min_rad" value="-3.4907011145661" />
+  <xacro:property name="joint5_limit_min_rad" value="-2.35626639554178" />
+  <xacro:property name="joint6_limit_min_rad" value="-9.42477796076938" />
+
+<!-- Speed Limit(rad) -->
+  <xacro:property name="joint1_speed_limit_rad" value="3.48885399302218" />
+  <xacro:property name="joint2_speed_limit_rad" value="2.90888208665722" />
+  <xacro:property name="joint3_speed_limit_rad" value="3.49065850398866" />
+  <xacro:property name="joint4_speed_limit_rad" value="5.23598775598299" />
+  <xacro:property name="joint5_speed_limit_rad" value="6.28318530717959" />
+  <xacro:property name="joint6_speed_limit_rad" value="12.5663706143592" />
+
+<!-- Effort. 0.0 is enough but robot_state_publisher and move_group require them. -->
+  <xacro:property name="joint1_effort" value="0.0" />
+  <xacro:property name="joint2_effort" value="0.0" />
+  <xacro:property name="joint3_effort" value="0.0" />
+  <xacro:property name="joint4_effort" value="0.0" />
+  <xacro:property name="joint5_effort" value="0.0" />
+  <xacro:property name="joint6_effort" value="0.0" />
+
+
+  <xacro:property name="true" value="1" />
+  <xacro:property name="false" value="0" />
+
+  <xacro:property name="revolute" value="0" />
+  <xacro:property name="prismatic" value="1" />
+</robot>

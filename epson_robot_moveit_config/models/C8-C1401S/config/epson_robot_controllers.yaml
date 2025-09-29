@@ -1,0 +1,24 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 1000 # Hz
+
+    epson_joint_trajectory_controller:
+      type: epson_ros2_controller/EpsonJointTrajectoryController
+    epson_joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+
+epson_joint_trajectory_controller:
+  ros__parameters:
+    state_publish_rate: 125.0
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+    joints:
+      - j1_joint
+      - j2_joint
+      - j3_joint
+      - j4_joint
+      - j5_joint
+      - j6_joint

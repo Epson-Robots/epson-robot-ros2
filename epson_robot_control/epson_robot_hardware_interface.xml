@@ -1,0 +1,9 @@
+<library path="epson_robot_hardware_interface">
+  <class name="epson_robot_control/EpsonRobotHwIf"
+         type="epson_robot_control::EpsonRobotHwIf"
+         base_class_type="hardware_interface::SystemInterface">
+    <description>
+      EPSON Robot ros2_control plugin.
+    </description>
+  </class>
+</library>

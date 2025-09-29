@@ -1,0 +1,4 @@
+uint8 bitnum
+---
+int16 res
+uint8 bitdata

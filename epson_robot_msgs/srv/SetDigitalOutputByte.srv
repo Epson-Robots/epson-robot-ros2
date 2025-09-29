@@ -1,0 +1,4 @@
+uint8 bytenum
+uint8 bytedata
+---
+int16 res

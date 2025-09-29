@@ -1,0 +1,4 @@
+uint8 wordnum
+---
+int16 res
+uint16 worddata

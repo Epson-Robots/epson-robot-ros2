@@ -1,0 +1,9 @@
+<library path="epson_joint_trajectory_controller">
+  <class name="epson_ros2_controller/EpsonJointTrajectoryController"
+         type="epson_ros2_controller::EpsonJointTrajectoryController"
+         base_class_type="controller_interface::ControllerInterface">
+    <description>
+      TBD
+    </description>
+  </class>
+</library>

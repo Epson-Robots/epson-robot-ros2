@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>epson_robot_control</name>
+  <version>1.0.0</version>
+  <description>ros2_control plugin for Epson robot.</description>
+  <maintainer email="noreply@noreply.com">Seiko Epson Corporation</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>hardware_interface</depend>
+  <depend>pluginlib</depend>
+  <depend>epson_robot_msgs</depend>
+
+  <exec_depend>epson_ros2_controller</exec_depend>
+  <exec_depend>controller_manager</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
