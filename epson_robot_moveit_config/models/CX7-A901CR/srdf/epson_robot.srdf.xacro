@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<robot name="EPSON_CX7-A901CR" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <group name="arm">
+        <link name="j1_link"/>
+        <link name="j2_link"/>
+        <link name="j3_link"/>
+        <link name="j4_link"/>
+        <link name="j5_link"/>
+        <link name="j6_link"/>
+        <joint name="j1_joint"/>
+        <joint name="j2_joint"/>
+        <joint name="j3_joint"/>
+        <joint name="j4_joint"/>
+        <joint name="j5_joint"/>
+        <joint name="j6_joint"/>
+    </group>
+
+    <disable_collisions link1="base_link" link2="j1_link" reason="Adjacent"/>
+    <disable_collisions link1="j1_link" link2="j2_link" reason="Adjacent"/>
+    <disable_collisions link1="j1_link" link2="j3_link" reason="Never"/>
+    <disable_collisions link1="j2_link" link2="j3_link" reason="Adjacent"/>
+    <disable_collisions link1="j2_link" link2="j4_link" reason="Never"/>
+    <disable_collisions link1="j2_link" link2="j5_link" reason="Never"/>
+    <disable_collisions link1="j2_link" link2="j6_link" reason="Never"/>
+    <disable_collisions link1="j3_link" link2="j4_link" reason="Adjacent"/>
+    <disable_collisions link1="j3_link" link2="j5_link" reason="Never"/>
+    <disable_collisions link1="j3_link" link2="j6_link" reason="Never"/>
+    <disable_collisions link1="j4_link" link2="j5_link" reason="Adjacent"/>
+    <disable_collisions link1="j4_link" link2="j6_link" reason="Never"/>
+    <disable_collisions link1="j5_link" link2="j6_link" reason="Adjacent"/>
+
+</robot>

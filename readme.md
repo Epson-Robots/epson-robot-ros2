@@ -46,21 +46,34 @@ MoveIt 2 and ros2_control are not in the package provided by Epson. Make sure th
 
 ### 2.1 Supported Models
 
-Real-time motion control is available for the following models.
+This package is available for the following models. The feature is available if the following version requirements are met.
+
+- ROS2 package: 1.1.0 or higher
+- Client library: 1.1.0 or higher
+- RC800 controller: 8.1.2.0 or higher
+
+For models marked with <sup>*</sup> in the list below, the feature is available if the following version requirements are met.
+
+- ROS2 package: 1.0.0 or higher
+- Client library: 1.0.0 or higher
+- RC800 controller: 8.1.1.0 or higher
 
 **SCARA robot**
 
-- GX4-C251S
-- GX4-C301S
-- GX4-C351S
-- GX4-C351S-L
-- GX4-C351S-R
+|Series|Model|
+|--|--|
+|GX4 Series|GX4-C251S<sup>\*</sup>, GX4-C251C<br>GX4-C301S<sup>\*</sup>, GX4-C301SM, GX4-C301C, GX4-C301CM <br>GX4-C351S<sup>\*</sup>, GX4-C351SM, GX4-C351C, GX4-C351CM<br>GX4-C351S-L<sup>\*</sup>, GX4-C351C-L, GX4-C351S-R<sup>\*</sup>, GX4-C351C-R|
+|GX8 Series|GX8-C452S, GX8-C452SR, GX8-C452C, GX8-C452CR<br>GX8-C453S, GX8-C453SR, GX8-C453C, GX8-C453CR<br>GX8-C552S, GX8-C552SR, GX8-C552C, GX8-C552CR<br>GX8-C553S, GX8-C553SR, GX8-C553C, GX8-C553CR<br>GX8-C652S, GX8-C652SR, GX8-C652C, GX8-C652CR<br>GX8-C653S, GX8-C653SR, GX8-C653C, GX8-C653CR|
+|RS Series|RS4-C351S, RS4-C351C<br>RS6-C552S, RS6-C552C|
 
 **6-axis robot**
 
-- C8-C901S
-- C8-C1401S
-- C12-C1401S
+|Series|Model|
+|--|--|
+|C8 Series|C8-C901S<sup>\*</sup>, C8-C901SR, C8-C901C, C8-C901CR<br>C8-C1401S<sup>\*</sup>, C8-C1401SR, C8-C1401C, C8-C1401CR|
+|C12 Series|C12-C1401S<sup>\*</sup>,C12-C1401C|
+|CX4 Series|CX4-A601S, CX4-A601SR, CX4-A601C, CX4-A601CR|
+|CX7 Series|CX7-A701S, CX7-A701SR, CX7-A701C, CX7-A701CR<br>CX7-A901S, CX7-A901SR, CX7-A901C, CX7-A901CR|
 
 ### 2.2 Recommended Environment for the Linux PC
 
@@ -391,7 +404,7 @@ You can also end robot control by using the terminate ROS 2 node in [Service](#5
 
 To restart robot motion in the user program after an error occurs in the controller, or an emergency stop or the safeguard door opening occurs, set the hardware component provided by Epson to the INACTIVATE state when these exceptions occur. Next, handle the exception that occurred, and set the hardware component to the ACTIVATE state again. Now you can restart robot motion.
 
-For how to set the hardware component to INACTIVATE/ACTIVATE from the user program, refer to the controller_manager_activate function in the epson_moveit_except_demo.cpp demo program in this package. The state of the hardware component can also be made to transition using the following command on the command line.
+For how to set the hardware component to INACTIVATE/ACTIVATE from the user program, refer to the controller_manager_activate function in the epson_moveit_exception_demo.cpp demo program in this package. The state of the hardware component can also be made to transition using the following command on the command line.
 
 **Transitioning to the INACTIVATE state**
 

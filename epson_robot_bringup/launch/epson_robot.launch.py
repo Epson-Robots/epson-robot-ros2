@@ -302,6 +302,11 @@ def generate_launch_description():
             lc_rb_model, "config/moveit_controllers.yaml"
     ])
 
+    planning_scene_monitor_parameters = {
+        "publish_planning_scene": True,
+        "publish_planning_scene_hz": 30.0,
+    }
+
     # -------------------------------------------------------------------
 
     # Start the actual move_group node/action server --------------------
@@ -316,6 +321,7 @@ def generate_launch_description():
             joint_limits_yaml,
             planning_pipeline_config,
             moveit_controllers,
+            planning_scene_monitor_parameters,
         ],
     )
 

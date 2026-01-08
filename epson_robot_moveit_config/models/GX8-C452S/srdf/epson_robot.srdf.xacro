@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="EPSON_GX8-C452S" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <group name="arm">
+        <link name="base_link" />
+        <link name="j1_link"/>
+        <link name="j2_link"/>
+        <link name="j3_link"/>
+        <link name="j4_link"/>
+        <joint name="base_joint" />
+        <joint name="j1_joint"/>
+        <joint name="j2_joint"/>
+        <joint name="j3_joint"/>
+        <joint name="j4_joint"/>
+    </group>
+
+    <disable_collisions link1="base_link" link2="j1_link" reason="Adjacent" />
+    <disable_collisions link1="j1_link" link2="j2_link" reason="Adjacent" />
+    <disable_collisions link1="j1_link" link2="j3_link" reason="Never" />
+    <disable_collisions link1="j1_link" link2="j4_link" reason="Never" />
+    <disable_collisions link1="j2_link" link2="j3_link" reason="Adjacent" />
+    <disable_collisions link1="j2_link" link2="j4_link" reason="Never" />
+    <disable_collisions link1="j3_link" link2="j4_link" reason="Adjacent" />
+
+</robot>

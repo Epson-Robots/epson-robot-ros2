@@ -284,8 +284,8 @@
   <link name="${LINK_6}">
     <visual>
       <origin
-        xyz="0 -0.824 -1.152"
-        rpy="1.570796 0 0" />
+        xyz="-1.152 0 -0.830"
+        rpy="3.141593 0 1.570796" />
       <geometry>
         <mesh
           filename="package://${LINK6_MESH}" scale="0.001 0.001 0.001"/>
@@ -293,13 +293,13 @@
       <material
         name="">
         <color
-          rgba="1 1 1 1" />
+          rgba="0.75 0.75 0.75 1" />
       </material>
     </visual>
     <collision>
       <origin
-        xyz="0 -0.824 -1.152"
-        rpy="1.570796 0 0" />
+        xyz="-1.152 0 -0.830"
+        rpy="3.141593 0 1.570796" />
       <geometry>
         <mesh
           filename="package://${LINK6_MESH}" scale="0.001 0.001 0.001"/>
@@ -310,13 +310,13 @@
   <joint name="${JOINT_6}" type="revolute">
     <origin
       xyz="0 0.080 0"
-      rpy="0 0 0" />
+      rpy="-1.570796 -1.570796 0" />
     <parent
       link="${LINK_5}" />
     <child
       link="${LINK_6}" />
     <axis
-      xyz="0 -1 0" />
+      xyz="0 0 -1" />
     <limit
       lower="${joint6_limit_min_rad}"
       upper="${joint6_limit_max_rad}"

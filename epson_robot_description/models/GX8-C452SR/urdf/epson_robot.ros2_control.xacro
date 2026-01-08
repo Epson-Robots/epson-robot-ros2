@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<robot name="EPSON_GX8-C452SR" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:arg name="use_fake_hardware" default="false" />
+  <xacro:arg name="controller_ip" default="" />
+  <xacro:arg name="controller_port" default="" />
+  <xacro:arg name="client_ip" default="" />
+  <xacro:arg name="client_builtinmsg_port" default="" />
+  <xacro:arg name="client_userdata_port" default="" />
+  <xacro:arg name="send_format" default="" />
+  <xacro:arg name="recv_format" default="" />
+  <xacro:arg name="weight" default="" />
+  <xacro:arg name="inertia" default="" />
+  <xacro:arg name="eccentricity" default="" />
+  <xacro:arg name="security" default="" />
+  <xacro:arg name="ca_cert" default="" />
+  <xacro:arg name="client_cert" default="" />
+  <xacro:arg name="key" default="" />
+  <xacro:arg name="governance" default="" />
+  <xacro:arg name="permissions" default="" />
+  <xacro:arg name="password" default="" />
+  <xacro:arg name="buffer_size" default="" />
+  <xacro:arg name="namespace" default="" />
+  <xacro:arg name="log_level" default="" />
+  <xacro:arg name="initial_positions_file" default="$(find epson_robot_description)/models/$(arg rb_model)/config/initial_positions.yaml" />
+  <xacro:property name="initial_positions_file" value="$(arg initial_positions_file)" />
+  <xacro:property name="initial_positions" value="${xacro.load_yaml(initial_positions_file)['initial_positions']}"/>
+  
+  <ros2_control name="EPSON_ROBOT" type="system">
+    <xacro:if value="$(arg use_fake_hardware)">
+      <hardware>
+        <plugin>fake_components/GenericSystem</plugin>
+        <param name="model">$(arg rb_model)</param>
+      </hardware>
+      <joint name="${JOINT_1}">
+        <command_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_value">${initial_positions['j1_joint']}</param>
+        </state_interface>
+      </joint>
+      <joint name="${JOINT_2}">
+        <command_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_value">${initial_positions['j2_joint']}</param>
+        </state_interface>
+      </joint>
+      <joint name="${JOINT_3}">
+        <command_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_value">${initial_positions['j3_joint']}</param>
+        </state_interface>
+      </joint>
+      <joint name="${JOINT_4}">
+        <command_interface name="position"/>
+        <state_interface name="position">
+          <param name="initial_value">${initial_positions['j4_joint']}</param>
+        </state_interface>
+       </joint>
+    </xacro:if>
+    
+    <xacro:unless value="$(arg use_fake_hardware)">
+      <hardware>
+        <plugin>epson_robot_control/EpsonRobotHwIf</plugin>
+        <param name="controller_ip">$(arg controller_ip)</param>
+        <param name="controller_port">$(arg controller_port)</param>
+        <param name="client_ip">$(arg client_ip)</param>
+        <param name="client_builtinmsg_port">$(arg client_builtinmsg_port)</param>
+        <param name="client_userdata_port">$(arg client_userdata_port)</param>
+        <param name="send_format">$(arg send_format)</param>
+        <param name="recv_format">$(arg recv_format)</param>
+        <param name="rb_model">$(arg rb_model)</param>
+        <param name="weight">$(arg weight)</param>
+        <param name="inertia">$(arg inertia)</param>
+        <param name="eccentricity">$(arg eccentricity)</param>
+        <param name="security">$(arg security)</param>
+        <param name="ca_cert">$(arg ca_cert)</param>
+        <param name="client_cert">$(arg client_cert)</param>
+        <param name="key">$(arg key)</param>
+        <param name="governance">$(arg governance)</param>
+        <param name="permissions">$(arg permissions)</param>
+        <param name="password">$(arg password)</param>
+        <param name="buffer_size">$(arg buffer_size)</param>
+        <param name="namespace">$(arg namespace)</param>
+        <param name="log_level">$(arg log_level)</param>
+      </hardware>
+      <joint name="${JOINT_1}">
+        <command_interface name="position"/>
+        <state_interface name="position"/>
+      </joint>
+      <joint name="${JOINT_2}">
+        <command_interface name="position"/>
+        <state_interface name="position"/>
+      </joint>
+      <joint name="${JOINT_3}">
+        <command_interface name="position"/>
+        <state_interface name="position"/>
+      </joint>
+      <joint name="${JOINT_4}">
+        <command_interface name="position"/>
+        <state_interface name="position"/>
+      </joint>
+    </xacro:unless>
+
+  </ros2_control>
+</robot>
