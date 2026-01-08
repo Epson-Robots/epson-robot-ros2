@@ -1,0 +1,24 @@
+move_group:
+ ros__parameters:
+  trajectory_execution:
+    moveit_manage_controllers: False
+    allowed_execution_duration_scaling: 1.2
+    allowed_goal_duration_margin: 0.5
+    allowed_start_tolerance": 0.01
+  
+  moveit_controller_manager: moveit_simple_controller_manager/MoveItSimpleControllerManager
+  
+  moveit_simple_controller_manager:
+    controller_names:
+      - epson_joint_trajectory_controller
+      
+    epson_joint_trajectory_controller:
+      action_ns: follow_joint_trajectory
+      type: FollowJointTrajectory
+      default: true
+      joints:
+        - j1_joint
+        - j2_joint
+        - j3_joint
+        - j4_joint
+

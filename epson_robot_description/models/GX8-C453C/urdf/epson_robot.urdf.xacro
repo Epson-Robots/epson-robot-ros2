@@ -1,0 +1,233 @@
+<?xml version="1.0"?>
+<robot name="EPSON_GX8-C453C" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<!-- arg model for xacro files -->
+  <xacro:arg name="rb_model" default="GX8-C453C" />
+
+<!-- include xacro -->
+  <xacro:include filename="$(find epson_robot_description)/models/$(arg rb_model)/urdf/epson_robot_property.xacro" />
+  <xacro:include filename="$(find epson_robot_description)/models/$(arg rb_model)/urdf/epson_robot_transmission.xacro" />
+  <xacro:include filename="$(find epson_robot_description)/models/$(arg rb_model)/urdf/epson_robot.ros2_control.xacro" />
+
+<!-- world link -->
+  <link name="world"/>
+
+<!-- base link -->
+  <link name="${BASE_LINK}">
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="1.57 0 0" />
+      <geometry>
+        <mesh
+          filename="package://${BASE_MESH}" scale="0.001 0.001 0.001" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="1.57 0 0" />
+      <geometry>
+        <mesh
+          filename="package://${BASE_MESH}" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint name="${BASE_JOINT}" type="fixed">
+    <origin
+      xyz="0 0 -0.266"
+      rpy="0 0 0" />
+    <parent
+      link="world"/>
+    <child
+      link="${BASE_LINK}" />
+  </joint>
+  
+
+
+<!--link 1-->  
+  <link name="${LINK_1}">
+    <visual>
+      <origin
+        xyz="0 0 -0.318"
+        rpy="1.57 0 -1.57" />
+      <geometry>
+        <mesh
+          filename="package://${LINK1_MESH}" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 -0.318"
+        rpy="1.57 0 -1.57" />
+      <geometry>
+        <mesh
+          filename="package://${LINK1_MESH}" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <xacro:transmission_joint name="${JOINT_1}" />
+  <joint name="${JOINT_1}" type="revolute">
+    <origin
+      xyz="0 0 0.318"
+      rpy="0 0 0" />
+    <parent
+      link="${BASE_LINK}" />
+    <child
+      link="${LINK_1}" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="${joint1_limit_min_rad}"
+      upper="${joint1_limit_max_rad}"
+      velocity="${joint1_speed_limit_rad}"
+      effort="${joint1_effort}" />
+  </joint>
+
+
+
+<!--link 2-->  
+  <link name="${LINK_2}">
+    <visual>
+      <origin
+        xyz="-0.2 0 -0.375"
+        rpy="1.57 0 -1.57" />
+      <geometry>
+        <mesh
+          filename="package://${LINK2_MESH}" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75 0.75 0.75 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="-0.2 0 -0.375"
+        rpy="1.57 0 -1.57" />
+      <geometry>
+        <mesh
+          filename="package://${LINK2_MESH}" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <xacro:transmission_joint name="${JOINT_2}" />
+  <joint name="${JOINT_2}" type="revolute" >
+    <origin
+      xyz="0.2 0 0.057"
+      rpy="0 0 0" />
+    <parent
+      link="${LINK_1}" />
+    <child
+      link="${LINK_2}" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="${joint2_limit_min_rad}"
+      upper="${joint2_limit_max_rad}"
+      velocity="${joint2_speed_limit_rad}"
+      effort="${joint2_effort}" />
+  </joint>
+
+
+
+<!--link 3-->
+  <link name="${LINK_3}">
+    <visual>
+      <origin
+        xyz="0 0 0.335"
+        rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.045" length="0.581"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 0.95 0.9" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0.335"
+        rpy="0 0 0" />
+      <geometry>
+        <cylinder radius="0.045" length="0.581"/>
+      </geometry>
+    </collision>
+  </link>
+  <xacro:transmission_joint name="${JOINT_3}" />
+  <joint name="${JOINT_3}" type="prismatic" >
+    <origin
+      xyz="0.25 0 -0.109"
+      rpy="0 0 0" />
+    <parent
+      link="${LINK_2}" />
+    <child
+      link="${LINK_3}" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="${joint3_limit_min_meter}"
+      upper="${joint3_limit_max_meter}"
+      velocity="${joint3_speed_limit_meter}"
+      effort="${joint3_effort}" />
+  </joint>
+
+
+
+<!--link 4-->
+  <link name="${LINK_4}">
+    <visual>
+      <origin
+        xyz="0 -0.45 -0.266"
+        rpy="1.57 0 0" />
+      <geometry>
+        <mesh
+          filename="package://${LINK4_MESH}" scale="0.001 0.001 0.001"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75 0.75 0.75 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 -0.45 -0.266"
+        rpy="1.57 0 0" />
+      <geometry>
+        <mesh
+          filename="package://${LINK4_MESH}" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+  </link>
+  <xacro:transmission_joint name="${JOINT_4}" />
+  <joint name="${JOINT_4}" type="revolute">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0"/>
+    <parent
+      link="${LINK_3}" />
+    <child
+      link="${LINK_4}" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="${joint4_limit_min_rad}"
+      upper="${joint4_limit_max_rad}"
+      velocity="${joint4_speed_limit_rad}"
+      effort="${joint4_effort}" />
+  </joint>
+
+</robot>
